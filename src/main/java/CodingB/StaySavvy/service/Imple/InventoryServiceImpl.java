@@ -2,7 +2,6 @@ package CodingB.StaySavvy.service.Imple;
 
 
 import CodingB.StaySavvy.dto.*;
-import CodingB.StaySavvy.entity.Hotel;
 import CodingB.StaySavvy.entity.Inventory;
 import CodingB.StaySavvy.entity.Room;
 import CodingB.StaySavvy.entity.User;
@@ -67,7 +66,7 @@ public class InventoryServiceImpl implements InventoryService {
     }
 
     @Override
-    public Page<HotelPriceDto> searchHotels(HotelSearchRequest hotelSearchRequest) {
+    public Page<HotelPriceResponseDto> searchHotels(HotelSearchRequest hotelSearchRequest) {
         log.info("Searching hotels for {} city, from {} to {}", hotelSearchRequest.getCity(), hotelSearchRequest.getStartDate(), hotelSearchRequest.getEndDate());
         Pageable pageable = PageRequest.of(hotelSearchRequest.getPage(), hotelSearchRequest.getSize());
         long dateCount =
@@ -79,7 +78,12 @@ public class InventoryServiceImpl implements InventoryService {
                         hotelSearchRequest.getStartDate(), hotelSearchRequest.getEndDate(), hotelSearchRequest.getRoomsCount(),
                         dateCount, pageable);
 
-        return hotelPage;
+        return hotelPage.map(hotelPriceDto -> {
+            HotelPriceResponseDto hotelPriceResponseDto = modelMapper.map(hotelPriceDto.getHotel(), HotelPriceResponseDto.class);
+            hotelPriceResponseDto.setPrice(hotelPriceDto.getPrice());
+            return hotelPriceResponseDto;
+        });
+
     }
 
     @Override

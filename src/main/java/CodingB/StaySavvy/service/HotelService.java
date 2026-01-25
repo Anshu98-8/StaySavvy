@@ -3,6 +3,7 @@ package CodingB.StaySavvy.service;
 
 import CodingB.StaySavvy.dto.HotelDto;
 import CodingB.StaySavvy.dto.HotelInfoDto;
+import CodingB.StaySavvy.dto.HotelInfoRequestDto;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public interface HotelService {
 
     void activateHotel(Long hotelId);
 
-    HotelInfoDto getHotelInfoById(Long hotelId);
+    HotelInfoDto getHotelInfoById(Long hotelId, HotelInfoRequestDto hotelInfoRequestDto);
 
     List<HotelDto> getAllHotels();
 
