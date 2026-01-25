@@ -34,6 +34,9 @@ public class Inventory {
     @JoinColumn(name= "room_id", nullable = false)
     private Room room;
 
+    @Column(nullable = false, columnDefinition = "INTEGER DEFAULT 0")
+    private Integer reservedCount;
+
     @Column(nullable = false)
     private LocalDate date;
 
