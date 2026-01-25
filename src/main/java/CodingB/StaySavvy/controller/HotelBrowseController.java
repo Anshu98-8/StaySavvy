@@ -3,6 +3,7 @@ package CodingB.StaySavvy.controller;
 
 import CodingB.StaySavvy.dto.HotelDto;
 import CodingB.StaySavvy.dto.HotelInfoDto;
+import CodingB.StaySavvy.dto.HotelPriceDto;
 import CodingB.StaySavvy.dto.HotelSearchRequest;
 import CodingB.StaySavvy.service.HotelService;
 import CodingB.StaySavvy.service.InventoryService;
@@ -21,9 +22,9 @@ public class HotelBrowseController {
     private final HotelService hotelService;
 
     @GetMapping("/search")
-    public ResponseEntity<Page<HotelDto>> searchHotels(@RequestBody HotelSearchRequest hotelSearchRequest) {
+    public ResponseEntity<Page<HotelPriceDto>> searchHotels(@RequestBody HotelSearchRequest hotelSearchRequest) {
 
-        Page<HotelDto> page = inventoryService.searchHotels(hotelSearchRequest);
+        var page = inventoryService.searchHotels(hotelSearchRequest);
         return ResponseEntity.ok(page);
     }
 
