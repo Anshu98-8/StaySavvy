@@ -1,11 +1,11 @@
 package CodingB.StaySavvy.service;
 
 
-import CodingB.StaySavvy.dto.HotelDto;
-import CodingB.StaySavvy.dto.HotelPriceDto;
-import CodingB.StaySavvy.dto.HotelSearchRequest;
+import CodingB.StaySavvy.dto.*;
 import CodingB.StaySavvy.entity.Room;
 import org.springframework.data.domain.Page;
+
+import java.util.List;
 
 public interface InventoryService {
 
@@ -15,4 +15,7 @@ public interface InventoryService {
 
     Page<HotelPriceDto> searchHotels(HotelSearchRequest hotelSearchRequest);
 
+    List<InventoryDto> getAllInventoryByRoom(Long roomId);
+
+    void updateInventory(Long roomId, UpdateInventoryRequestDto updateInventoryRequestDto);
 }
