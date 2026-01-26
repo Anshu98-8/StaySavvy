@@ -8,7 +8,7 @@
 		<version>4.0.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>CodingB</groupId>
+	<groupId>com.CodingB</groupId>
 	<artifactId>StaySavvy</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>StaySavvy</name>

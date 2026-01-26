@@ -1,0 +1,10 @@
+package com.CodingB.StaySavvy.entity.enums;
+
+public enum BookingStatus {
+    RESERVED,
+    GUESTS_ADDED,
+    PAYMENTS_PENDING,
+    CONFIRMED,
+    CANCELLED,
+    EXPIRED
+}
