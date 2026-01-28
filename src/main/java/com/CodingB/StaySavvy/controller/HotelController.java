@@ -24,7 +24,7 @@ public class HotelController {
     private final HotelService hotelService;
     private final BookingService bookingService;
 
-    @PostMapping
+    @PostMapping("/create")
     @Operation(summary = "Create a new hotel", tags = {"Admin Hotel"})
     public ResponseEntity<HotelDto> createNewHotel(@RequestBody HotelDto hotelDto) {
         log.info("Attempting to create a new hotel with name: "+hotelDto.getName());

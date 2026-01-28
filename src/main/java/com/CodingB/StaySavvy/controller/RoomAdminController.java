@@ -19,7 +19,7 @@ public class RoomAdminController {
 
     private final RoomService roomService;
 
-    @PostMapping
+    @PostMapping("/create")
     @Operation(summary = "Create a new room in a hotel", tags = {"Admin Inventory"})
     public ResponseEntity<RoomDto> createNewRoom(@PathVariable Long hotelId,
                                                  @RequestBody RoomDto roomDto) {
