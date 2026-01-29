@@ -2,18 +2,23 @@ version: 0.2
 
 phases:
   install:
-    runtime-version:
-      java: OpenJDK25
+    commands:
+      - echo Installing OpenJDK 25...
+      # Download the latest OpenJDK 25 (update the URL if using a specific build)
+      - wget https://download.java.net/java/early_access/jdk25/archive/1/GPL/openjdk-25-ea+1_linux-x64_bin.tar.gz
+      - tar -xzf openjdk-25-ea+1_linux-x64_bin.tar.gz
+      - export JAVA_HOME=$CODEBUILD_SRC_DIR/jdk-25
+      - export PATH=$JAVA_HOME/bin:$PATH
+  pre_build:
+    commands:
+      - java -version
   build:
     commands:
-      - echo Building, Testing and packaging the application...
-      - mvn package -DskipTests
-  post-build:
-    commands:
-      - echo Build, Testing and packaging complete.
+      - echo Building StaySavvy with Java 25...
+      - mvn clean package -DskipTests
 artifacts:
   files:
-    - target/*.jar
+    - target/StaySavvy-0.0.1-SNAPSHOT.jar
   discard-paths: yes
 cache:
   paths:
